@@ -1,0 +1,31 @@
+###
+GET http://localhost:8000/test
+
+
+###
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+  "name": "userexample1",
+  "email": "userexample@email.com",
+  "password": "examplepassword"
+}
+
+###
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+  "email": "userexample@email.com",
+  "password": "examplepassword"
+}
+
+
+
+
+### Teste com token válido
+GET http://localhost:8000/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInN1YiI6InVzZXJleGFtcGxlQGVtYWlsLmNvbSIsImV4cCI6MTc2MjE5NjA5MSwiaWF0IjoxNzYyMTkyNDkxfQ.GEJz-bEdhFD7LYvnHyANWVSJis-kpG8Og8fPI0HeoyQ
+
+
