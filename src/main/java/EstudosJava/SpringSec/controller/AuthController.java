@@ -6,6 +6,7 @@ import EstudosJava.SpringSec.dto.request.LoginRequest;
 import EstudosJava.SpringSec.dto.request.RegisterUserRequest;
 import EstudosJava.SpringSec.dto.response.LoginResponse;
 import EstudosJava.SpringSec.dto.response.RegisterUserResponse;
+import EstudosJava.SpringSec.entity.Role;
 import EstudosJava.SpringSec.entity.User;
 import EstudosJava.SpringSec.repository.UserRepository;
 import jakarta.validation.Valid;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
@@ -58,6 +61,13 @@ public class AuthController {
         newUser.setPassword(passwordEncoder.encode(request.password()));
         newUser.setEmail(request.email());
         newUser.setName(request.name());
+
+        if (request.role() != null){
+            newUser.setRoles(Set.of(request.role()));
+        }
+        else{
+            newUser.setRoles(Set.of(Role.ROLE_USER));
+        }
 
         userRepository.save(newUser);
 

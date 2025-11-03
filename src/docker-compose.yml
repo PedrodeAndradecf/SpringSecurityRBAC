@@ -1,12 +1,12 @@
 version: "3.9"
 services:
   db:
-    container_name: jav_db
+    container_name: jav_db_sr
     image: postgres:16
     environment:
       - POSTGRES_PASSWORD=oramack25
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=javanow_s_db
+      - POSTGRES_DB=javanow_sR_db
     ports:
       - "5432:5432"
     volumes:
@@ -14,4 +14,4 @@ services:
 
 volumes:
   javanow_pgdata:
-    name: javanow_s_pgdata
+    name: javanow_sR_pgdata
